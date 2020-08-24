@@ -51,9 +51,9 @@ $preference->payment_methods = array(
 
 
 $preference->back_urls = array(
-    "success" => "https://www.tu-sitio/success",
-    "failure" => "http://www.tu-sitio/failure",
-    "pending" => "http://www.tu-sitio/pending"
+    "success" => "http://mpcheck.cinexo.com.ar/receive.php",
+    "failure" => "http://mpcheck.cinexo.com.ar/receive.php",
+    "pending" => "http://mpcheck.cinexo.com.ar/receive.php"
 );
 $preference->auto_return = "approved";
 $preference->external_reference = "juanpablobono@gmail.com";
@@ -201,7 +201,7 @@ $preference->save();
                                     </div>
                                    
                                     
-                                    <form action="/procesar-pago" method="POST">
+                                    <form action="/index.php" method="POST">
                                         <script
                                          src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                          data-preference-id="<?php echo $preference->id; ?>">
