@@ -2,17 +2,17 @@
  require_once 'vendor/autoload.php'; // You have to require the library from your Composer vendor folder
 
 // Agrega credenciales
- MercadoPago\SDK::setAccessToken("TEST-8908150110936817-020710-1c283986a049260641194ee4170ad927__LA_LD__-151041389"); // Either Production or SandBox AccessToken
+ MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398"); // Either Production or SandBox AccessToken
 
 // MercadoPago\SDK::setPlatformId("PLATFORM_ID");
-//MercadoPago\SDK::setIntegratorId("INTEGRATOR_ID");
+MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 //MercadoPago\SDK::setCorporationId("CORPORATION_ID");
  
  //payer 
 $payer = new MercadoPago\Payer();
   $payer->name = "lalo";
   $payer->surname = "Landa";
-  $payer->email = "juanpablobono@gmail.com";
+  $payer->email = "test_user_63274575@testuser.com";
   $payer->phone = array(
     "area_code" => "11",
     "number" => "22223333"
@@ -51,12 +51,13 @@ $preference->payment_methods = array(
 
 
 $preference->back_urls = array(
-    "success" => "https://www.tu-sitio/success",
-    "failure" => "http://www.tu-sitio/failure",
-    "pending" => "http://www.tu-sitio/pending"
+    "success" => "http://mpcheck.cinexo.com.ar/success.php",
+    "failure" => "http://mpcheck.cinexo.com.ar/failure.php",
+    "pending" => "http://mpcheck.cinexo.com.ar/pending.php"
 );
 $preference->auto_return = "approved";
 $preference->external_reference = "juanpablobono@gmail.com";
+$preference->notification_url = "http://mpcheck.cinexo.com.ar/receive.php";
 
 $preference->save();
 
@@ -201,12 +202,16 @@ $preference->save();
                                     </div>
                                    
                                     
-                                    <form action="/procesar-pago" method="POST">
+<!--                                    <form action="/index.php" method="POST">
                                         <script
                                          src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                          data-preference-id="<?php echo $preference->id; ?>">
                                         </script>
                                       </form>
+                                    -->
+                                    
+                                    
+  <?php echo "<a class='mercadopago-button' href='$preference->sandbox_init_point'> Pagar La Compra </a>";?>
                                 </div>
                             </div>
                         </div>

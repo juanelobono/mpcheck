@@ -1,23 +1,23 @@
  <?php
 
-    MercadoPago\SDK::setAccessToken("TEST-8908150110936817-020710-1c283986a049260641194ee4170ad927__LA_LD__-151041389");
+    MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398");
 
     switch($_POST["type"]) {
         case "payment":
             $payment = MercadoPago\Payment.find_by_id($_POST["id"]);
-            error_log("New payment" . json_decode($payment), 0);
+            error_log(json_decode($payment), 3, "payment.log");
             break;
         case "plan":
             $plan = MercadoPago\Plan.find_by_id($_POST["id"]);
-            error_log("New plan" . json_decode(plan), 0);
+            error_log(json_decode($plan), 3, "plan.log");
             break;
         case "subscription":
             $plan = MercadoPago\Subscription.find_by_id($_POST["id"]);
-            error_log("New subscription" . json_decode($plan), 0);
+            error_log(json_decode($plan), 3, "plan.log");
             break;
         case "invoice":
             $plan = MercadoPago\Invoice.find_by_id($_POST["id"]);
-            error_log("New invoice" . json_decode($plan), 0);
+            error_log(json_decode($plan), 3, "plan.log");
             break;
     }
 
